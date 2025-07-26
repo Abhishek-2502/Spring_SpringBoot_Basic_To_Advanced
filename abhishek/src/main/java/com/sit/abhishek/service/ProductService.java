@@ -24,7 +24,7 @@ public class ProductService {
 
     public String editProduct(int id, ProductEntity updatedProduct){
         if (repo.findById(id).isEmpty()){
-            return "Product is not available";
+            return "Product with id: "+ id +" is not available";
         }
         else {
             ProductEntity p = repo.findById(id).get();
@@ -32,7 +32,18 @@ public class ProductService {
             p.setPrice(updatedProduct.getPrice());
             p.setCategory(updatedProduct.getCategory());
             repo.save(p);
-            return "Product Updated successfully";
+            return "Product with id: "+ id +" Updated successfully";
+        }
+    }
+
+    public String deleteProduct(int id){
+        if (repo.findById(id).isEmpty()){
+            return "Product with id: "+ id +" is not available";
+        }
+        else{
+            ProductEntity p = repo.findById(id).get();
+            repo.delete(p);
+            return "Product with id: "+ id +" Deleted successfully";
         }
     }
 }
