@@ -24,11 +24,11 @@ public class MyController {
 
     /*
     // Static api calls
-    @GetMapping("/products")
+    @GetMapping("/myproducts")
     public List<String> getProducts(){
         return List.of("Laptop","Mobile");
     }
-    @PostMapping("/products")
+    @PostMapping("/myproducts")
     public String addProduct(@RequestBody String product) {
         return "Product added: " + product;
     }
@@ -36,18 +36,18 @@ public class MyController {
     */
 
 
-    @GetMapping("/products")
+    @GetMapping("/myproducts")
     public List<String> getProducts(){
         return service.getProducts();
     }
 
-    @PostMapping("/products")
+    @PostMapping("/myproducts")
     public String addProduct(@RequestBody String product) {
         return service.addProducts(product); //uses service layer to add an API Call using service logic
     }
 
     // placeholder {} is used to signify that the specific product entered will be deleted
-    @DeleteMapping("/products/{name}")
+    @DeleteMapping("/myproducts/{name}")
     public String deleteProduct(@PathVariable String name) {
         return service.deleteProduct(name);
     }
