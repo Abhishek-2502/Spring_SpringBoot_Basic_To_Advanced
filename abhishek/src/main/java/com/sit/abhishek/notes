@@ -1,7 +1,0 @@
-ANNOTATION:
-
-@RestController                                         :- Combines @Controller + @ResponseBody
-@GetMapping, @PostMapping, @PutMapping, @DeleteMapping  :- Maps HTTP methods
-@RequestParam. @PathVariable, @RequestBody              :- Bind request data
-@Autowired                                              :- Dependency Injection
-@Component, @Service, @Repository                       :- Bean definitions

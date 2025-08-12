@@ -1,7 +1,7 @@
 package com.sit.abhishek.entity;
 
 // This class will represent DB Table
-// Requires JPA ( Java Persistence API ) and MySQL Dependencies
+// Requires JPA (Java Persistence API) and MySQL Dependencies
 
 
 import jakarta.persistence.Entity;
@@ -27,7 +27,5 @@ public class ProductEntity {
     private String name;
     private int price;
     private String category;
-
-
 
 }
