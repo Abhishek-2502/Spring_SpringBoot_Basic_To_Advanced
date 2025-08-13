@@ -13,37 +13,35 @@ public class ProductService {
     @Autowired
     ProductRepository repo;
 
-    public List<ProductEntity> getProducts(){
+    public List<ProductEntity> getProducts() {
         return repo.findAll();
     }
 
-    public String addProduct(ProductEntity product){
+    public String addProduct(ProductEntity product) {
         repo.save(product);
-        return "Added "+product+" successfully";
+        return "Added " + product + " successfully";
     }
 
-    public String editProduct(int id, ProductEntity updatedProduct){
-        if (repo.findById(id).isEmpty()){
-            return "Product with id: "+ id +" is not available";
-        }
-        else {
+    public String editProduct(int id, ProductEntity updatedProduct) {
+        if (repo.findById(id).isEmpty()) {
+            return "Product with id: " + id + " is not available";
+        } else {
             ProductEntity p = repo.findById(id).get();
             p.setName(updatedProduct.getName());
             p.setPrice(updatedProduct.getPrice());
             p.setCategory(updatedProduct.getCategory());
             repo.save(p);
-            return "Product with id: "+ id +" Updated successfully";
+            return "Product with id: " + id + " Updated successfully";
         }
     }
 
-    public String deleteProduct(int id){
-        if (repo.findById(id).isEmpty()){
-            return "Product with id: "+ id +" is not available";
-        }
-        else{
+    public String deleteProduct(int id) {
+        if (repo.findById(id).isEmpty()) {
+            return "Product with id: " + id + " is not available";
+        } else {
             ProductEntity p = repo.findById(id).get();
             repo.delete(p);
-            return "Product with id: "+ id +" Deleted successfully";
+            return "Product with id: " + id + " Deleted successfully";
         }
     }
 }

@@ -8,17 +8,21 @@ import org.springframework.web.bind.annotation.*;
 
 import com.sit.abhishek.service.MyService;
 
-//Controller is used to make a REST API Controller class which is used to implement GetMapping, PostMapping
+//RestController is used to make a REST API Controller class which is used to implement GetMapping, PostMapping, etc.
 @RestController
-public class MyController {
+public class MyRestController {
 
     @Autowired
-    private MyService service; // Dependency Injection is the addition of service layer so that business logic can be added separately to the service layer
-     // This step signifies dependency injection through MyService
+    private MyService service; // Dependency Injection is the addition of service layer so that business logic can be added separately to the service layer. This step signifies dependency injection through MyService
 
-    @GetMapping("/")
+    @RequestMapping("/")
     public String getMessage() {
-        return "Hello from Spring";
+        return "Hello from Spring by RequestMapping";
+    }
+
+    @GetMapping("/get")
+    public String getMessage1() {
+        return "Hello from Spring by GetMapping";
     }
 
 
@@ -37,7 +41,7 @@ public class MyController {
 
 
     @GetMapping("/products")
-    public List<String> getProducts(){
+    public List<String> getProducts() {
         return service.getProducts();
     }
 
