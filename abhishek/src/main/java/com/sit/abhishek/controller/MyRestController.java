@@ -3,7 +3,10 @@ package com.sit.abhishek.controller;
 
 import java.util.List;
 
+import com.sit.abhishek.entity.ProductModel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.sit.abhishek.service.MyService;
@@ -14,11 +17,6 @@ public class MyRestController {
 
     @Autowired
     private MyService service; // Dependency Injection is the addition of service layer so that business logic can be added separately to the service layer. This step signifies dependency injection through MyService
-
-    @RequestMapping("/")
-    public String getMessage() {
-        return "Hello from Spring by RequestMapping";
-    }
 
     @GetMapping("/get")
     public String getMessage1() {
@@ -41,18 +39,28 @@ public class MyRestController {
 
 
     @GetMapping("/products")
-    public List<String> getProducts() {
+    public List<ProductModel> getProducts() {
         return service.getProducts();
     }
 
     @PostMapping("/products")
-    public String addProduct(@RequestBody String product) {
-        return service.addProducts(product); //uses service layer to add an API Call using service logic
+    public String addProduct(@RequestBody ProductModel product) {
+        return service.addProducts(product);
     }
 
-    // placeholder {} is used to signify that the specific product entered will be deleted
-    @DeleteMapping("/products/{name}")
-    public String deleteProduct(@PathVariable String name) {
-        return service.deleteProduct(name);
+    @PutMapping("/products/{index}")
+    public String updateProduct(@PathVariable int index, @RequestBody ProductModel newProduct) {
+        return service.updateProduct(index, newProduct);
     }
+
+    @DeleteMapping("/products/{name}")
+    public ResponseEntity<String> deleteProduct(@PathVariable String name) {
+        String result = service.deleteProduct(name);
+        if (result.contains("deleted successfully")) {
+            return ResponseEntity.ok(result);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(result);
+        }
+    }
+
 }

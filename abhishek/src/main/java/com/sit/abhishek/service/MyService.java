@@ -3,25 +3,39 @@ package com.sit.abhishek.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sit.abhishek.entity.ProductEntity;
+import com.sit.abhishek.entity.ProductModel;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MyService {
 
-    List<String> products = new ArrayList<String>();
+    List<ProductModel> products = new ArrayList<>();
 
-    public List<String> getProducts() {
+    public List<ProductModel> getProducts() {
         return this.products;
     }
 
-    public String addProducts(String product) {
-        this.products.add(product);
+    public String addProducts(ProductModel product) {
+        products.add(product);
         return "Product " + product + " added successfully";
     }
 
-    public String deleteProduct(String product) {
-        this.products.remove(product);
-        return "Product " + product + " is deleted successfully";
+    public String updateProduct(int index, ProductModel newProduct) {
+        if (index < 0 || index >= products.size()) {
+            return "Invalid index: " + index;
+        }
+        ProductModel oldProduct = products.set(index, newProduct);
+        return "Product " + oldProduct + " updated to " + newProduct;
+    }
+
+    public String deleteProduct(String productName) {
+        boolean removed = products.removeIf(p -> p.getName().equalsIgnoreCase(productName.trim()));
+        if (removed) {
+            return "Product " + productName + " is deleted successfully";
+        } else {
+            return "Product " + productName + " not found";
+        }
     }
 
 }
