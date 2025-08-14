@@ -1,6 +1,4 @@
-\# SpringBoot\_Basics
-
-
+# Spring Boot Basics
 
 ### Spring Boot: https://www.youtube.com/watch?v=-Fe0zk-F4OA
 
