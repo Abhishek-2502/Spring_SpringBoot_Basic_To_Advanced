@@ -9,7 +9,7 @@ public class MyFirstController {
 
     @RequestMapping("/Controller")
     public String hello() {
-        return "hello";             //Search for hello.html or hello.jsp view (Require Thymeleaf library)
+        return "hello";             //Search for hello.html or hello.jsp view (Require a Thymeleaf library)
     }
 
     @RequestMapping("/ControllerString")

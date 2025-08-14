@@ -17,6 +17,14 @@ public class ProductService {
         return repo.findAll();
     }
 
+    public ProductEntity getProductById(int id) {
+        if (!repo.existsById(id)) {
+            return null;
+        }
+
+        return repo.findById(id).orElse(null);
+    }
+
     public String addProduct(ProductEntity product) {
         repo.save(product);
         return "Added " + product + " successfully";
