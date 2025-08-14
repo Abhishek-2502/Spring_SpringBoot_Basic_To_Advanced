@@ -1,1 +1,8 @@
-# SpringBoot_Flexi
+SpringBoot\_Basics
+
+### Spring Boot: https://www.youtube.com/watch?v=-Fe0zk-F4OA
+
+### Spring Security: https://www.youtube.com/watch?v=oeni_9g7too
+
+
+
