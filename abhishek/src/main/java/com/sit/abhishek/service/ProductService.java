@@ -18,10 +18,6 @@ public class ProductService {
     }
 
     public ProductEntity getProductById(int id) {
-        if (!repo.existsById(id)) {
-            return null;
-        }
-
         return repo.findById(id).orElse(null);
     }
 
