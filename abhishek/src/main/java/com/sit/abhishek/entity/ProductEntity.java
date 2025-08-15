@@ -19,8 +19,9 @@ import lombok.NoArgsConstructor;
 @Entity
 public class ProductEntity {
 
-    @Id   // Helps to generate a primary key
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id  // Marks this field as the primary key of the entity
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Helps to generate a primary key automatically
+    // strategy = GenerationType.IDENTITY means the database will handle the primary key generation
 
     // Column of Tables in DB
     private int id;
