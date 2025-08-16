@@ -1,6 +1,8 @@
-# Spring Boot Basics
+# Spring Boot
 
-### Spring Boot: https://www.youtube.com/watch?v=-Fe0zk-F4OA
+### Spring Boot: 
+- Telusko: https://www.youtube.com/watch?v=-Fe0zk-F4OA
+- Anuj: https://www.youtube.com/watch?v=FYoBDj4s99E
 
-### Spring Security: https://www.youtube.com/watch?v=oeni\_9g7too
-
+### Spring Security: 
+- Telusko: https://www.youtube.com/watch?v=oeni\_9g7too
