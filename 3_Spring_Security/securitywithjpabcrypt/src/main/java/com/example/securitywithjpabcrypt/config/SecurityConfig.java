@@ -1,5 +1,4 @@
-package com.security.securitywithjpa.config;
-
+package com.example.securitywithjpabcrypt.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -9,11 +8,9 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -30,18 +27,6 @@ public class SecurityConfig {
                 .httpBasic(Customizer.withDefaults()).build();
     }
 
-    // This bean is used to create in-memory users for authentication
-    // In a real application, you would typically use a database or another user store to manage users and their roles.
-    // Comment UserRepo.java and MyUserDetailsService.java files to use this in-memory user details service instead of the database./
-//    @Bean
-//    public UserDetailsService userDetailsService() {
-//        UserDetails user1 = User.withDefaultPasswordEncoder().username("user1").password("password").roles("USER").build();
-//
-//        UserDetails user2 = User.withDefaultPasswordEncoder().username("user2").password("password").roles("ADMIN").build();
-//
-//        return new InMemoryUserDetailsManager(user1, user2);
-//    }
-
 
     // This bean is used to create a custom authentication provider to get user details from the database
     @Autowired
@@ -50,7 +35,24 @@ public class SecurityConfig {
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setPasswordEncoder(NoOpPasswordEncoder.getInstance());
+
+        // 1. Use NoOpPasswordEncoder for no hashed password. It is used for testing purposes only.
+//        provider.setPasswordEncoder(NoOpPasswordEncoder.getInstance());
+
+        // OR
+
+        /* 2. Use BCryptPasswordEncoder for password encoding. It is fetching hashed passwords from the database.
+            Use this after registering users with hashed passwords otherwise you will not be able to hit api if you don't have any hashed password.
+            It is used for validating user credentials during login.
+            BCrypt has a strength parameter (default = 10). Higher values are more secure but slower.
+            Always use BCrypt (or Argon2/SCrypt) instead of MD5, SHA1, or plain text storage.
+         */
+
+        provider.setPasswordEncoder(new BCryptPasswordEncoder(12));
+
+
+
+
         provider.setUserDetailsService(userDetailsService);
         return provider;
     }
@@ -59,16 +61,6 @@ public class SecurityConfig {
     /* In DB :
 
     CREATE DATABASE securitywithjpa;
-
-    CREATE TABLE users (id INT primary key, username VARCHAR(50), password VARCHAR(50));
-
-    USE securitywithjpa;
-
-    INSERT INTO users (id, username, password) VALUES (1, 'user1', 'password1');
-    INSERT INTO users (id, username, password) VALUES (2, 'user2', 'password2');
-
-    // To test the application, you can use the following endpoints in Postman
-    // GET http://localhost:8080//students
 
      */
 

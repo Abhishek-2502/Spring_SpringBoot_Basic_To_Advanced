@@ -21,6 +21,17 @@ public class StudentController {
             new Student("Alice", "Johnson", 19)
     ));
 
+    @GetMapping("/")
+    public String home() {
+        return "Hello";
+    }
+
+//     Will not work because it is reserved by Spring Boot
+//    @GetMapping("/error")
+//    public String handleError() {
+//        return "Route not found";
+//    }
+
     @GetMapping("/students")
     public List<Student> getStudents() {
         return students;
