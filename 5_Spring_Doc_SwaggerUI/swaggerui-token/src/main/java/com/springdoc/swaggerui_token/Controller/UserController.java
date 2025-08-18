@@ -1,7 +1,8 @@
-package com.springdoc.swaggerui.Controller;
+package com.springdoc.swaggerui_token.Controller;
 
-import com.springdoc.swaggerui.Model.Student;
+import com.springdoc.swaggerui_token.Model.Student;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +20,6 @@ public class UserController {
                     new Student(2, "Kiran", 65)
             ));
 
-
     @GetMapping
     @Operation(summary = "Get all users", description = "Get all users in the system")
     public List<Student> getUser() {
@@ -31,5 +31,12 @@ public class UserController {
     public Student addStudent(@RequestBody Student student) {
         students.add(student);
         return student;
+    }
+
+    @GetMapping("/with-token")
+    @SecurityRequirement(name = "bearerAuth")
+    @Operation(summary = "Get all users with Token", description = "Get all users in the system with token")
+    public List<Student> getUserWithToken() {
+        return students;
     }
 }

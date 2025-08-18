@@ -1,4 +1,4 @@
-package com.springdoc.swaggerui.model;
+package com.springdoc.swaggerui_token.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

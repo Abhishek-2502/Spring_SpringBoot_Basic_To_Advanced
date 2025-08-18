@@ -16,8 +16,8 @@ public class SwaggerConfig {
                         .title("Demo Application API")
                         .version("1.0.0")
                         .contact(new Contact()
-                        .name("Abhishek Rajput")
-                        .email("abhishek25022004@gmail.com"))
+                                .name("Abhishek Rajput")
+                                .email("abhishek25022004@gmail.com"))
                         .termsOfService("http://swagger.io/terms/")
                         .description("This is a sample Spring Boot REST API with Swagger documentation"));
 
