@@ -14,10 +14,10 @@
 - [Telusko](https://www.youtube.com/watch?v=oeni_9g7too)
 
 # Other Resources
-- [**Spring Boot**](https://www.youtube.com/playlist?list=PLiOIhBfKi8AIYNWEjYy1zZFe1N8GvPRHR)
-- [**Spring Boot**](https://www.youtube.com/playlist?list=PL6W8uoQQ2c60g6_fcjDCLHSx1LBeVYqyZ)
-- [**Spring Boot**](https://www.youtube.com/playlist?list=PLA3GkZPtsafacdBLdd3p1DyRd5FGfr3Ue)
-- [**Genie Ashwani Roadmap**](https://www.youtube.com/watch?v=CxEzvnb6MlE&list=LL&index=3)
+- [Spring Boot](https://www.youtube.com/playlist?list=PLiOIhBfKi8AIYNWEjYy1zZFe1N8GvPRHR)
+- [Spring Boot](https://www.youtube.com/playlist?list=PL6W8uoQQ2c60g6_fcjDCLHSx1LBeVYqyZ)
+- [Spring Boot](https://www.youtube.com/playlist?list=PLA3GkZPtsafacdBLdd3p1DyRd5FGfr3Ue)
+- [Genie Ashwani Roadmap](https://www.youtube.com/watch?v=CxEzvnb6MlE&list=LL&index=3)
 
 # YouTube Channels:
 - [Telusko](https://www.youtube.com/@Telusko)
