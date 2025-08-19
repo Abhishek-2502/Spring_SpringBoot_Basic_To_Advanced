@@ -1,0 +1,97 @@
+When we use Dependency Injection and IoC, user don't want to worry about object lifecycle. 
+But in the code part, only Classname obj = new Classname(); is replaced by Classname obj; and some annotations are added. 
+Other than this anything else DI or IoC reduce in terms of coding part?
+
+Dependency Injection (DI) and Inversion of Control (IoC) often just look like:
+
+Classname obj = new Classname(); // replaced with
+@Autowired
+Classname obj;
+
+But the real benefit isn’t just about avoiding the new keyword — there are several other subtle but important code-level reductions and improvements you get:
+
+1. No manual wiring of dependencies
+Without DI:
+ServiceA a = new ServiceA();
+ServiceB b = new ServiceB(a);
+Controller c = new Controller(b);
+
+With DI:
+@Controller
+public class MyController {
+    private final ServiceB serviceB;
+
+    @Autowired
+    public MyController(ServiceB serviceB) {
+        this.serviceB = serviceB;
+    }
+}
+➡ You don’t manually create the entire chain of dependencies; the container wires them automatically.
+
+
+
+
+2. No lifecycle management code
+Without DI, if a resource needs:
+
+Initialization (init() calls), Cleanup (close() calls), Singleton/multiton handling
+
+you’d write boilerplate to manage it.
+
+With IoC, the container does it (e.g., Spring’s @PostConstruct, @PreDestroy, @Scope).
+
+
+
+
+3. No need for dependency lookup code
+
+Without DI, if you need an object from a registry, you might write:
+MyService s = ServiceRegistry.getService("myService");
+
+With DI:
+@Autowired
+MyService s;
+➡ The container figures out where to get it from.
+
+
+
+4. Configuration is externalized
+
+Without DI:
+Database db = new Database("localhost", "user", "pass");
+
+With DI:
+@Component
+public class Database {
+    public Database(@Value("${db.host}") String host, 
+                    @Value("${db.user}") String user,
+                    @Value("${db.pass}") String pass) { ... }
+}
+➡ No hardcoded values, less coupling.
+
+
+
+5. Easier swapping of implementations
+
+Without DI:
+PaymentService service = new PayPalPaymentService();
+If you switch to StripePaymentService, you must change everywhere you created PayPalPaymentService.
+
+With DI:
+@Autowired
+PaymentService service;
+➡ Swap in the bean definition/config, no code changes.
+
+
+
+✅ So, while syntactically you’re mostly removing new and adding annotations, logically you’re removing:
+
+1. Manual dependency wiring
+
+2. Lifecycle handling code
+
+3. Hardcoded configuration
+
+4. Service lookup boilerplate
+
+5. Tight coupling between implementations
