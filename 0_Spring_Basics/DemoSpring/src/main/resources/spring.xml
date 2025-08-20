@@ -1,0 +1,39 @@
+<!--    Copy it from https://docs.spring.io/spring-framework/docs/4.2.x/spring-framework-reference/html/xsd-configuration.html-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <!--    All classes whose object you want in IoC should be defined here-->
+    <bean id="dev" class="org.example.Dev"></bean>
+    <bean id="lap" class="org.example.Laptop"></bean>
+    <bean id="lapabcd" class="org.example.Laptop"></bean>
+
+    <bean id="dev1" class="org.example.Dev1">
+        <!--        Type of DI: Setter Injection (With Primitive Value)-->
+        <property name="age4" value="30"/>
+    </bean>
+
+    <bean id="dev2" class="org.example.Dev2">
+        <!--        Type of DI: Constructor Injection (With Primitive Value)-->
+        <!--        Will access parameter with name "age"-->
+        <!--        <constructor-arg name="age" value="100"/>-->
+
+        <!--        Type of DI: Constructor Injection (With Primitive Value)-->
+        <!--        Will access parameter with index 0-->
+        <!--        <constructor-arg index="0" value="1000"/>-->
+
+
+        <!--        Type of DI: Setter Injection (With Bean)-->
+        <property name="laptop" ref="lap"/>
+
+        <!--        Type of DI: Constructor Injection (With Bean)-->
+        <!--        <constructor-arg ref="lap"/>-->
+    </bean>
+</beans>
+
+        <!--NOTE:-->
+        <!--    <property> → Always setter injection.-->
+        <!--    <constructor-arg> → Always constructor injection. -->
+        <!--    Use ref for beans, value for primitives.-->

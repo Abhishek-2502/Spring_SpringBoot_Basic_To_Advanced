@@ -1,0 +1,38 @@
+<!--    Copy it from https://docs.spring.io/spring-framework/docs/4.2.x/spring-framework-reference/html/xsd-configuration.html-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <!--    All classes whose object you want in IoC should be defined here-->
+    <!--    <bean id="dev" class="org.example.Dev">-->
+    <!--        <property name="comp" ref="lap"/>-->
+    <!--    </bean>    -->
+    <!--    <bean id="lap" class="org.example.Laptop"></bean>-->
+    <!--    <bean id="desk" class="org.example.Desktop"></bean>-->
+
+
+    <!--    AUTOWIRING-->
+    <!--    <bean id="dev" class="org.example.Dev" autowire="byName"></bean>-->
+
+    <!--    <bean id="comp" class="org.example.Laptop"></bean>  &lt;!&ndash; Identified variable name in Dev Class automatically&ndash;&gt;-->
+    <!--    <bean id="desk" class="org.example.Desktop"></bean>-->
+
+
+    <!--    It will get confuse as 2 Beans are present of same type-->
+    <!--    <bean id="dev" class="org.example.Dev" autowire="byType"></bean>-->
+
+    <!--    <bean id="comp" class="org.example.Laptop"></bean>-->
+    <!--    <bean id="comp1" class="org.example.Desktop"></bean>-->
+
+
+    <!--    primary-->
+        <bean id="dev" class="org.example.Dev" autowire="byType"></bean>
+
+        <bean id="comp" class="org.example.Laptop" primary="true"></bean>
+        <bean id="comp1" class="org.example.Desktop"></bean>
+
+
+</beans>
+
