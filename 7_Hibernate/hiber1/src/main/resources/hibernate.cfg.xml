@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database connection settings -->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hiberdb</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">1234</property>
+
+
+        <!-- SQL dialect -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <!-- Show SQL statements in the console -->
+        <property name="hibernate.show_sql">true</property>
+
+        <!-- Format SQL statements for better readability -->
+        <property name="hibernate.format_sql">true</property>
+
+        <!-- Automatically update the database schema -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+
+        <!-- XML mapping files -->
+        <!--        <mapping resource="com/example/model/Entity1.hbm.xml"/>-->
+
+        <!--        OR -->
+
+        <!-- Annotation Class mappings -->
+        <mapping class="org.example.entities.Student"/>
+        <!--        <mapping class="org.example.entities.Certificate"/>-->
+
+    </session-factory>
+</hibernate-configuration>
