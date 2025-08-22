@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.5.5</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.chat.app</groupId>
+	<artifactId>chatroomapp</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>chatroomapp</name>
+	<description>Demo project for Spring Boot</description>
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+		<developer/>
+	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- WebJars dependencies for frontend libraries -->
+		<!-- WebJars is a way to include client-side libraries in a Maven project -->
+		<!-- It provides a way to access WebJars resources in a Spring application -->
+		<!-- It allows you to manage client-side libraries like JavaScript and CSS using Maven -->
+		<!-- This is useful for integrating frontend libraries into a Spring Boot application -->
+		<!-- WebJars Locator Core is used to locate WebJars in the classpath -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>webjars-locator-core</artifactId>
+		</dependency>
+
+		<!-- WebSocket dependencies -->
+		<!-- SockJS is a JavaScript library that provides a WebSocket-like object that can be used in browsers -->
+		<!-- It is used to provide a fallback mechanism for WebSocket connections -->
+		<!-- If WebSocket is not supported, SockJS provides a fallback -->
+		<!-- It allows the application to work in browsers that do not support WebSocket natively -->
+		<!-- It provides a way to establish a connection using various transport protocols like XHR, JSONP, and others -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>sockjs-client</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+
+		<!-- STOMP is a simple text-based protocol that allows clients to communicate with WebSocket servers -->
+		<!-- STOMP protocol for WebSocket messaging. This is used for sending messages over WebSocket connections -->
+		<!-- It is often used in real-time applications for sending messages between clients and servers -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>stomp-websocket</artifactId>
+			<version>2.3.3</version>
+		</dependency>
+
+		<!-- Frontend libraries for styling and interactivity -->
+		<!-- Bootstrap for styling -->
+		<!-- Bootstrap is a popular CSS framework that provides pre-designed components and styles for web applications -->
+		<!-- It helps in creating responsive and visually appealing user interfaces -->
+		<!-- This dependency includes the Bootstrap CSS and JavaScript files -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>5.0.2</version>
+		</dependency>
+
+		<!-- JQuery for DOM manipulation -->
+		<!-- JQuery is a fast, small, and feature-rich JavaScript library -->
+		<!-- It simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development -->
+		<!-- This dependency includes the JQuery library, which is used for handling DOM events and making Ajax requests -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>3.1.1-1</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

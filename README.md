@@ -13,6 +13,9 @@
 ### Spring Security: 
 - [Telusko](https://www.youtube.com/watch?v=oeni_9g7too)
 
+### Spring Web Socket: 
+- [Durgesh](https://www.youtube.com/watch?v=bBQnWcbxDo8)
+
 # Other Resources
 - [Certification Course: Scaler](https://www.scaler.com/topics/course/java-spring-boot-blogging-app/)
 - [Spring Boot: CoderX Ankit](https://www.youtube.com/playlist?list=PLiOIhBfKi8AIYNWEjYy1zZFe1N8GvPRHR)
