@@ -19,7 +19,7 @@ public class StudentController {
     }
 
 
-    @PostMapping("/users")
+    @PostMapping("/user")
     public String addUser(@RequestBody Users user) {
         return service.addUser(user);
     }
