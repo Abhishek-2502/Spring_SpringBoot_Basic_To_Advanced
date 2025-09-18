@@ -20,6 +20,7 @@ public class QuestionController {
     @Autowired
     QuestionService questionService;
 
+    // For getting environment properties like port number
     @Autowired
     Environment environment;
 
@@ -41,12 +42,13 @@ public class QuestionController {
     @GetMapping("generate")
     public ResponseEntity<List<Integer>> getQuestionsForQuiz
             (@RequestParam String categoryName, @RequestParam Integer numQuestions ){
+        // Print the port number of the service instance
+        System.out.println(environment.getProperty("local.server.port"));
         return questionService.getQuestionsForQuiz(categoryName, numQuestions);
     }
 
     @PostMapping("getQuestions")
     public ResponseEntity<List<QuestionWrapper>> getQuestionsFromId(@RequestBody List<Integer> questionIds){
-        System.out.println(environment.getProperty("local.server.port"));
         return questionService.getQuestionsFromId(questionIds);
     }
 
