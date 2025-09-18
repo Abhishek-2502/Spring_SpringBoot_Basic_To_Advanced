@@ -16,6 +16,9 @@
 ### Spring Web Socket: 
 - [Durgesh](https://www.youtube.com/watch?v=bBQnWcbxDo8)
 
+### Eureka (Microservices)
+- [Telusko](https://www.youtube.com/watch?v=3WqDbU_Xnu4&list=PLsyeobzWxl7rRyGcqgZ3MP5pWGPwUvprI)
+
 # Other Resources
 - [Certification Course: Scaler](https://www.scaler.com/topics/course/java-spring-boot-blogging-app/)
 - [Spring Boot: CoderX Ankit](https://www.youtube.com/playlist?list=PLiOIhBfKi8AIYNWEjYy1zZFe1N8GvPRHR)

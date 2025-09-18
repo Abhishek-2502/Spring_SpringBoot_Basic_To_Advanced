@@ -1,0 +1,119 @@
+How IoC container decides which implementation to inject when multiple classes implement the same interface.
+
+
+---
+
+🟢 Scenario 1: Only one implementation
+
+If only one class implements the interface, there’s no ambiguity.
+
+@Autowired
+private Vehicle vehicle;
+
+👉 Spring injects the only available bean that implements Vehicle.
+
+
+---
+
+🟡 Scenario 2: Multiple implementations (Ambiguity)
+
+If multiple beans implement the same interface, Spring cannot decide automatically and throws an error:
+
+NoUniqueBeanDefinitionException: expected single matching bean but found 2: car,bike
+
+Example:
+
+@Component
+public class Car implements Vehicle { ... }
+
+@Component
+public class Bike implements Vehicle { ... }
+
+@Autowired
+private Vehicle vehicle;  // ❌ Error: which one? Car or Bike?
+
+
+---
+
+🟢 Ways to Resolve Ambiguity
+
+1. Use @Primary
+Mark one implementation as the default:
+
+
+
+@Component
+@Primary
+public class Car implements Vehicle { ... }
+
+Now:
+
+@Autowired
+private Vehicle vehicle;
+
+👉 Always injects Car unless explicitly overridden.
+
+
+---
+
+2. Use @Qualifier
+Specify which bean you want:
+
+
+
+@Component("carVehicle")
+public class Car implements Vehicle { ... }
+
+@Component("bikeVehicle")
+public class Bike implements Vehicle { ... }
+
+@Autowired
+@Qualifier("bikeVehicle")
+private Vehicle vehicle;
+
+👉 Injects Bike.
+
+
+---
+
+3. Use Constructor Injection with @Qualifier
+
+
+
+@Service
+public class TravelService {
+    private final Vehicle vehicle;
+
+    @Autowired
+    public TravelService(@Qualifier("carVehicle") Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
+}
+
+
+---
+
+4. Inject All Implementations (List / Map) If you need all beans of an interface:
+
+
+
+@Autowired
+private List<Vehicle> vehicles; 
+
+// vehicles will contain [Car, Bike]
+
+Or:
+
+@Autowired
+private Map<String, Vehicle> vehicles; 
+
+// vehicles will contain {carVehicle=Car, bikeVehicle=Bike}
+
+
+---
+
+✅ Summary
+
+If 1 implementation → injects automatically.
+
+If >1 implementation → must use @Primary, @Qualifier, or inject all beans.

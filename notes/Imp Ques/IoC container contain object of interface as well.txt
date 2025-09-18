@@ -1,0 +1,69 @@
+Does IoC container contain object of interface as well?
+
+
+
+In IoC (Inversion of Control) containers like those in Spring, the container does not create an object of the interface itself.
+
+👉 Because in Java (or most OOP languages), you cannot instantiate an interface directly — you always need a concrete implementation.
+
+How IoC handles this:
+
+You write code against interfaces (for loose coupling).
+
+At runtime, the IoC container manages the objects (beans) of the classes that implement those interfaces.
+
+If a bean is injected into a field/constructor typed as an interface, the container provides the implementation class instance that matches.
+
+
+Example:
+
+public interface Vehicle {
+    void start();
+}
+
+@Component
+public class Car implements Vehicle {
+    @Override
+    public void start() {
+        System.out.println("Car started");
+    }
+}
+
+@Component
+public class Bike implements Vehicle {
+    @Override
+    public void start() {
+        System.out.println("Bike started");
+    }
+}
+
+@Service
+public class TravelService {
+
+    private final Vehicle vehicle;
+
+    @Autowired
+    public TravelService(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
+
+    public void beginJourney() {
+        vehicle.start();
+    }
+}
+
+What happens in IoC container:
+
+IoC container stores Car and Bike objects (beans).
+
+When TravelService asks for a Vehicle, the container injects the matching implementation.
+
+If multiple beans (Car, Bike) implement the interface, then you must use @Qualifier or @Primary to tell the container which one to inject.
+
+
+
+---
+
+✅ Conclusion:
+The IoC container does not contain an object of the interface itself.
+It only contains objects of concrete classes (beans). But it allows you to refer to them by their interface type for flexibility and loose coupling.
