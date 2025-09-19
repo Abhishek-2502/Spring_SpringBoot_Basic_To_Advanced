@@ -169,6 +169,8 @@ Example:
 
 👉 Eureka resolves `PAYMENT-SERVICE` to the correct instance automatically.
 
+![Service Discovery Architecture](<Eureka_Architecture.png>)
+
 ---
 
 ## 7. Feign Client
@@ -399,10 +401,6 @@ spring.cloud.gateway.routes[1].predicates[0]=Path=/payment/**
 * **Centralized Security** → Apply authentication once at gateway.
 * **Scalability** → New services can be added without client-side changes.
 * **Resilience** → Supports retries, fallbacks, circuit breakers.
-
----
-
-Got it 👍 Let’s extend your **Interview Points** section with **Spring Cloud API Gateway–related Q\&A** while keeping the Eureka/Feign context intact.
 
 ---
 
