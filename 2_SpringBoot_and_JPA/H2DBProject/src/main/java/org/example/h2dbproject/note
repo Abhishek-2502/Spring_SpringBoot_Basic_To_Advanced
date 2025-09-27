@@ -1,0 +1,19 @@
+// RELATED FILES----
+
+UserController
+MemberPo
+MyUser
+MemberRepo
+MyUserDetailsService
+SecurityConfig
+
+
+ProductController
+ProductDTO
+SecurityConfig (BASICS)
+
+// Comment Spring Security dependency in pom.xml to use this
+StudentController
+UserService
+UserRepository
+Users
