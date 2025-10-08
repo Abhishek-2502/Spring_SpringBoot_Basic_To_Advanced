@@ -40,4 +40,10 @@ public class UserController {
     public ResponseEntity<String> registerUser(@RequestBody MemberPo registrationDto) {
         return service.registerUser(registrationDto);
     }
+
+    @GetMapping("/logout")
+    public String logout() {
+
+        return "You have been logged out successfully.";
+    }
 }
