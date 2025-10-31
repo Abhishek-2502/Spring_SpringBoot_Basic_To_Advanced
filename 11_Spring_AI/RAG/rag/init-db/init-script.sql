@@ -1,0 +1,8 @@
+CREATE DATABASE vectordb;
+
+CREATE USER testuser WITH PASSWORD 'testpwd';
+
+GRANT ALL PRIVILEGES ON DATABASE vectordb TO vectordb;
+
+\c vectordb;
+CREATE EXTENSION IF NOT EXISTS vector;

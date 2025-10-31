@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  pgvector:
+    container_name: pgvector
+    image: ankane/pgvector:latest
+    restart: always
+    ports:
+      - "5431:5432"
+    environment:
+      POSTGRES_USER: testuser
+      POSTGRES_PASSWORD: testpwd
+      POSTGRES_DB: vectordb
+    volumes:
+      - pgvector-data:/var/lib/postgresql/data
+      - ./init-db:/docker-entrypoint-initdb.d
+
+volumes:
+  pgvector-data:
+    driver: local

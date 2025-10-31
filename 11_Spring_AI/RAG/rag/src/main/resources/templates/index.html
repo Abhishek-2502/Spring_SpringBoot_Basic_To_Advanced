@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>RAGBot with Spring AI - File Upload</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts Link For Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  </head>
+  <body>
+    
+    <!-- File Upload container -->
+    <div class="upload-container">
+      <div class="default-text">
+        <h1>Upload a File to RAGBot</h1>
+        <p>Select a document to process it with Spring AI-powered RAGBot.</p>
+		<p>If you have already uploaded a document, proceed to <a href="/chat">/chat</a></p>
+      </div>
+
+      <!-- File Upload Form -->
+      <form id="upload-form" action="/upload" method="POST" enctype="multipart/form-data">
+        <div class="upload-content">
+          <label for="fileToUpload" class="file-label">
+            <span class="material-symbols-rounded">upload_file</span>
+            <p id="file-name">Choose a file</p>
+          </label>
+          <input type="file" id="fileToUpload" name="fileToUpload" style="display:none;" required>
+          <button type="submit" id="upload-btn">Upload Document</button>
+        </div>
+      </form>
+    </div>
+
+  </body>
+  
+  <script>
+	document.querySelector('#fileToUpload').addEventListener('change', function() {
+        const fileName = this.files[0] ? this.files[0].name : 'Choose a file';
+        document.querySelector('#file-name').textContent = fileName;
+      });
+  </script>
+</html>

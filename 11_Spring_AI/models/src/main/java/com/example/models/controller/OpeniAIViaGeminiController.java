@@ -1,4 +1,6 @@
 // For OpenAI compatible models and for Gemini through the OpenAI API.
+// It uses RestClient to make HTTP requests to the Gemini API endpoint.
+// Spring AI is not used here directly for model interaction.
 
 package com.example.models.controller;
 
