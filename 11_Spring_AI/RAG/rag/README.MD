@@ -1,9 +1,21 @@
-
 # RAGBot Spring AI
 
 **RAGBot** is a Spring AI-powered Retrieval-Augmented Generation (RAG) application that allows users to upload documents and query information using vector search. It supports PostgreSQL with pgvector for vector storage and can use **Ollama** or **OpenAI** for embeddings and model queries.
 
 ---
+
+
+## Table of Contents
+
+* [Prerequisites](#prerequisites)
+* [Architecture](#architecture)
+* [Setup Instructions](#setup-instructions)
+* [Usage](#usage)
+* [Screenshots](#screenshots)
+* [Troubleshooting](#troubleshooting)
+* [License](#license)
+* [Author](#author)
+
 
 ## Prerequisites
 
@@ -16,6 +28,11 @@
     Ollama can be run locally or through Docker, but running Ollama from docker again and again is time consuming. So download it locally.  
 
 ---
+
+## Architecture
+
+  ![alt text](<screenshots/document_ingestion_pipeline.png>) 
+  ![alt text](<screenshots/rag_architecture.png>) 
 
 ## Setup Instructions
 
@@ -133,7 +150,24 @@ Start the application with Maven:
 ./mvnw spring-boot:run
 ```
 
+Access the application at:
+```http://localhost:8080
+```
+
+### 7. Stopping the Services
+
+To stop and remove the containers:
+```bash
+docker-compose -f compose-ollama.yml down
+```
+
+To stop and remove the containers if using Ollama locally:
+```bash
+docker-compose -f compose.yml down
+```
+
 ---
+
 
 ## Usage
 
@@ -144,6 +178,13 @@ Start the application with Maven:
    Use the `/query` endpoint to ask questions based on the uploaded document.
 
 ---
+
+## Screenshots
+
+  ![alt text](<screenshots/upload.png>) 
+  ![alt text](<screenshots/empty_chat.png>) 
+  ![alt text](<screenshots/chat.png>) 
+
 
 ## Troubleshooting
 
@@ -169,19 +210,9 @@ Start the application with Maven:
 
 ---
 
-## Stopping the Services
+## License
 
-To stop and remove the containers:
-```bash
-docker-compose -f compose-ollama.yml down
-```
-
-To stop and remove the containers if using Ollama locally:
-```bash
-docker-compose -f compose.yml down
-```
-
----
+This project is licensed under the **MIT License** – see the [LICENSE](./LICENSE) file for details.
 
 ## Author
  

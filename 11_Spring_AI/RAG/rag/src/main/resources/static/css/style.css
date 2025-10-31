@@ -7,15 +7,38 @@
   font-family: "Poppins", sans-serif;
 }
 
+/*:root {*/
+/*  --text-color: #FFFFFF; */
+/*  --icon-color: #A8C686; */
+/*  --icon-hover-bg: #4A6F44; */
+/*  --placeholder-color: #BFD6B4;*/
+/*  --outgoing-chat-bg: #2E5232; */
+/*  --incoming-chat-bg: #3C7042; */
+/*  --outgoing-chat-border: #2E5232;*/
+/*  --incoming-chat-border: #3C7042; */
+/*}*/
+
+/*:root {*/
+/*    --text-color: #F5EDE0;              !* soft cream text for readability *!*/
+/*    --icon-color: #D4A373;              !* warm tan accent for icons *!*/
+/*    --icon-hover-bg: #5C4033;           !* deep mocha hover background *!*/
+/*    --placeholder-color: #CBBBA0;       !* muted beige placeholder *!*/
+/*    --outgoing-chat-bg: #3E2C23;        !* dark espresso background *!*/
+/*    --incoming-chat-bg: #4E3629;        !* medium coffee tone for contrast *!*/
+/*    --outgoing-chat-border: #5C4033;    !* subtle border tone *!*/
+/*    --incoming-chat-border: #705546;    !* lighter mocha border *!*/
+/*}*/
+
+
 :root {
-  --text-color: #FFFFFF; 
-  --icon-color: #A8C686; 
-  --icon-hover-bg: #4A6F44; 
-  --placeholder-color: #BFD6B4;
-  --outgoing-chat-bg: #2E5232; 
-  --incoming-chat-bg: #3C7042; 
-  --outgoing-chat-border: #2E5232;
-  --incoming-chat-border: #3C7042; 
+    --text-color: #E8EAED;              /* soft white for readability */
+    --icon-color: #7CD1C0;              /* modern teal accent */
+    --icon-hover-bg: #2D3A4A;           /* deep slate hover effect */
+    --placeholder-color: #9AA0A6;       /* neutral gray for inputs */
+    --outgoing-chat-bg: #1E2A38;        /* dark navy blue background */
+    --incoming-chat-bg: #2A3B4D;        /* slightly lighter for contrast */
+    --outgoing-chat-border: #324B64;    /* soft border tone */
+    --incoming-chat-border: #3C5A73;    /* matching lighter border */
 }
 body {
   background: var(--outgoing-chat-bg);
