@@ -97,7 +97,8 @@ Start the application with Maven:
 ```
 
 Access the application at:
-```http://localhost:8081
+```
+http://localhost:8081
 ```
 
 ---
@@ -134,7 +135,6 @@ docker-comopose -f compose-ollama up --build -d
 Access the application at:
 ```
 http://localhost:8081
-
 ```
 
 ### **5. Pull Models for Ollama**
