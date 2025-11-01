@@ -9,7 +9,8 @@
 
 * [Prerequisites](#prerequisites)
 * [Architecture](#architecture)
-* [Setup Instructions](#setup-instructions)
+* [Setup Instructions Local](#setup-instructions-local)
+* [Setup Instructions Docker](#setup-instructions-docker)
 * [Usage](#usage)
 * [Screenshots](#screenshots)
 * [Troubleshooting](#troubleshooting)
@@ -34,7 +35,7 @@
   ![alt text](<screenshots/document_ingestion_pipeline.png>) 
   ![alt text](<screenshots/rag_architecture.png>) 
 
-## Setup Instructions
+## Setup Instructions Local
 
 ### **1. Clone the Repository**
 ```bash
@@ -42,56 +43,17 @@ git clone https://github.com/Spring_SpringBoot_Basic_To_Advanced
 cd Spring_SpringBoot_Basic_To_Advanced\11_Spring_AI\RAG\rag
 ```
 
-### **2. Start the Services**
-`Option 1:` 
-Start the PostgreSQL and Ollama service:
-```bash
-docker-compose -f compose-ollama.yml up -d
-```
-
-`Option 2:` 
-Start the PostgreSQL service only (Local Ollama):
-```bash
-docker-compose -f compose.yml up -d
-```
-`Note:` You can skip manually starting these services as SpringBoot automatically starts them when app starts.
-
-### **3. Configure Spring Profiles**
+### **2. Configure Spring Profiles**
 
 - **Default Configuration (`application.properties`)**
   
-  Put OpenAI API key and comment one profile which is not in use
-
-  ```properties  
-  spring.ai.openai.api-key=test
-  spring.profiles.active=ollama
-  spring.profiles.active=openai
-  ```
-
-
 - **Ollama-Specific Configuration (`application-ollama.properties`)**  
-  
-  Change model if needed and Uncomment `spring.docker.compose.file=compose-ollama.yaml` if you want to use Ollama in a Docker container along with PostgreSQL
-
-  ```properties
-  spring.ai.ollama.chat.options.model=mistral
-  spring.ai.ollama.embedding.options.model=nomic-embed-text
-
-  #spring.docker.compose.file=compose-ollama.yaml
-  ```
-
 
 - **OpenAI-Specific Configuration (`application-openai.properties`)**  
-  
-  Change model if needed
-
-  ```properties
-  spring.ai.openai.chat.options.model=gpt-4o
-  ```
 
 ---
 
-### 4. Profile Activation
+### **3. Profile Activation**
 
 Activate a profile by specifying it in the `application.properties` file or using the `SPRING_PROFILES_ACTIVE` environment variable.
 
@@ -119,21 +81,11 @@ SPRING_PROFILES_ACTIVE=openai ./mvnw spring-boot:run
 
 ---
 
-### 5. Pull Models for Ollama
+### **4. Pull Models for Ollama**
 
-If you're using **Ollama** in Docker, pull the required models after starting the container:
 ```bash
-docker exec -it ollama ollama pull nomic-embed-text mistral
-```
-
-Verify the models:
-```bash
-docker exec -it ollama ollama list
-```
-
-Else if you're using **Ollama** directly, pull the required models from Command Prompt:
-```bash
-ollama pull nomic-embed-text mistral
+ollama pull nomic-embed-text
+ollama pull phi3:mini
 ```
 
 Verify the models:
@@ -143,7 +95,7 @@ ollama list
 
 ---
 
-### 6. Start the Application
+### **5. Start the Application**
 
 Start the application with Maven:
 ```bash
@@ -151,19 +103,74 @@ Start the application with Maven:
 ```
 
 Access the application at:
+```http://localhost:8081
+```
+
+---
+
+## Setup Instructions Docker
+
+### **1. Clone the Repository**
+```bash
+git clone https://github.com/Spring_SpringBoot_Basic_To_Advanced
+cd Spring_SpringBoot_Basic_To_Advanced\11_Spring_AI\RAG\rag
+```
+
+### **2. Configure Spring Profiles**
+
+Same as Above
+
+---
+
+### **3. Profile Activation**
+
+Same as Above
+
+---
+
+### **4. Start the Application**
+
+Start the application (Local Ollama):
+```bash
+docker-comopose -f compose-postgresql up --build -d 
+```
+
+Start the application (Ollama in Docker):
+```bash
+docker-comopose -f compose-ollama up --build -d 
+```
+
+Access the application at:
 ```http://localhost:8080
 ```
 
-### 7. Stopping the Services
+---
+
+### **5. Pull Models for Ollama**
+
+If you're using **Ollama** in Docker, pull the required models after starting the container:
+```bash
+docker exec -it ollama ollama pull nomic-embed-text 
+docker exec -it ollama ollama pull phi3:mini
+```
+
+Verify the models:
+```bash
+docker exec -it ollama ollama list
+```
+
+---
+
+### **6. Stopping the Services**
 
 To stop and remove the containers:
 ```bash
-docker-compose -f compose-ollama.yml down
+docker-compose -f compose-ollama.yaml down
 ```
 
 To stop and remove the containers if using Ollama locally:
 ```bash
-docker-compose -f compose.yml down
+docker-compose -f compose-postgresql.yaml down
 ```
 
 ---
@@ -185,6 +192,7 @@ docker-compose -f compose.yml down
   ![alt text](<screenshots/empty_chat.png>) 
   ![alt text](<screenshots/chat.png>) 
 
+---
 
 ## Troubleshooting
 
@@ -213,6 +221,8 @@ docker-compose -f compose.yml down
 ## License
 
 This project is licensed under the **MIT License** – see the [LICENSE](./LICENSE) file for details.
+
+---
 
 ## Author
  

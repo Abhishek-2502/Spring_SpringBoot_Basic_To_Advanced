@@ -1,0 +1,44 @@
+pipeline {
+    agent { label 'ragbot' }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Checking out source code...'
+                checkout scm
+            }
+        }
+
+        stage('Pre-Build Cleanup') {
+            steps {
+                echo 'Pruning unused Docker resources before build...'
+                sh '''
+                    docker-compose -f compose.yml down
+                '''
+            }
+        }
+
+        stage('Build and Deploy') {
+            steps {
+                echo 'Building and starting Docker containers...'
+                sh '''
+                    docker-compose -f compose.yml build --no-cache
+                    docker-compose -f compose.ymlup -d
+                '''
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build and deployment succeeded!'
+        }
+        failure {
+            echo 'Build or deployment failed.'
+        }
+        always {
+            echo 'Build and deployment process finished.'
+            sh 'docker-compose ps'
+        }
+    }
+}

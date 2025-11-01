@@ -44,6 +44,12 @@ body {
   background: var(--outgoing-chat-bg);
 }
 
+/* Link styling */
+.white-link {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
 /* Chats container styling */
 .chat-container {
   overflow-y: auto;
