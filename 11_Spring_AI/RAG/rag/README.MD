@@ -51,8 +51,6 @@ cd Spring_SpringBoot_Basic_To_Advanced\11_Spring_AI\RAG\rag
 
 - **OpenAI-Specific Configuration (`application-openai.properties`)**  
 
----
-
 ### **3. Profile Activation**
 
 Activate a profile by specifying it in the `application.properties` file or using the `SPRING_PROFILES_ACTIVE` environment variable.
@@ -79,8 +77,6 @@ Or use an environment variable:
 SPRING_PROFILES_ACTIVE=openai ./mvnw spring-boot:run
 ```
 
----
-
 ### **4. Pull Models for Ollama**
 
 ```bash
@@ -92,8 +88,6 @@ Verify the models:
 ```bash
 ollama list
 ```
-
----
 
 ### **5. Start the Application**
 
@@ -120,13 +114,10 @@ cd Spring_SpringBoot_Basic_To_Advanced\11_Spring_AI\RAG\rag
 
 Same as Above
 
----
 
 ### **3. Profile Activation**
 
 Same as Above
-
----
 
 ### **4. Start the Application**
 
@@ -144,8 +135,6 @@ Access the application at:
 ```http://localhost:8080
 ```
 
----
-
 ### **5. Pull Models for Ollama**
 
 If you're using **Ollama** in Docker, pull the required models after starting the container:
@@ -158,8 +147,6 @@ Verify the models:
 ```bash
 docker exec -it ollama ollama list
 ```
-
----
 
 ### **6. Stopping the Services**
 
