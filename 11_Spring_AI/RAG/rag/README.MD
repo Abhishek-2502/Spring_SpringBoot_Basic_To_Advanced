@@ -132,7 +132,9 @@ docker-comopose -f compose-ollama up --build -d
 ```
 
 Access the application at:
-```http://localhost:8080
+```
+http://localhost:8081
+
 ```
 
 ### **5. Pull Models for Ollama**
