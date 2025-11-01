@@ -29,8 +29,8 @@ WORKDIR /app
 # Copy the built JAR file from the build stage
 COPY --from=build /app/target/*.jar app.jar
 
-# Expose port 8081 for the Spring Boot application
-EXPOSE 8081
+# Expose port 8082 for the Spring Boot application
+EXPOSE 8082
 
 # Specify the command to run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
@@ -39,8 +39,8 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
 # Build the Docker image
 # docker build -t rag-backend .
 
-# Run the container, mapping port 8081 on host to 8081 in container
-# docker run -d -p 8081:8081 --name rag-backend-container rag-backend
+# Run the container, mapping port 8082 on host to 8082 in container
+# docker run -d -p 8082:8082 --name rag-backend-container rag-backend
 
 # Tag the image for Docker Hub
 # docker tag rag-backend abhi25022004/rag-backend:latest

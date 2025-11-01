@@ -20,23 +20,6 @@ services:
       timeout: 5s
       retries: 5
 
-  rag-backend:
-    build: .
-    container_name: rag-backend-container
-    ports:
-      - "8081:8081"
-    environment:
-      POSTGRES_USER: testuser
-      POSTGRES_PASSWORD: testpwd
-      POSTGRES_DB: vectordb
-      SPRING_DATASOURCE_URL: jdbc:postgresql://pgvector:5432/vectordb
-      SPRING_DATASOURCE_USERNAME: testuser
-      SPRING_DATASOURCE_PASSWORD: testpwd
-    depends_on:
-      pgvector:
-        condition: service_healthy
-
-
 volumes:
   pgvector-data:
     driver: local

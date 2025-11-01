@@ -98,7 +98,7 @@ Start the application with Maven:
 
 Access the application at:
 ```
-http://localhost:8081
+http://localhost:8082
 ```
 
 ---
@@ -124,17 +124,17 @@ Same as Above
 
 Start the application (Local Ollama):
 ```bash
-docker-comopose -f compose-postgresql up --build -d 
+docker-comopose -f compose-postgresql.yaml up --build -d 
 ```
 
 Start the application (Ollama in Docker):
 ```bash
-docker-comopose -f compose-ollama up --build -d 
+docker-comopose -f compose-ollama.yaml up --build -d 
 ```
 
 Access the application at:
 ```
-http://localhost:8081
+http://localhost:8082
 ```
 
 ### **5. Pull Models for Ollama**
